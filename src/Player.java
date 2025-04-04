@@ -11,7 +11,7 @@ public class Player extends GameObject {
 	
 	public Player(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 8;
+		speed = 6;
 	}
 
 public void draw(Graphics g) {

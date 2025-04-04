@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements KeyListener, ActionListener{
-Player player = new Player(Blob.WIDTH/2,Blob.HEIGHT/2,40,40);
+Player player = new Player(Blob.WIDTH/2,Blob.HEIGHT/2,40,40);        
 Timer frameDraw; 
 
 public GamePanel() {
@@ -20,18 +20,18 @@ public GamePanel() {
 @Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-	if (e.getKeyCode() == KeyEvent.VK_UP) {
+	if (e.getKeyCode() == KeyEvent.VK_W) {
 		player.movingUp = true;
 	}
-	if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+	if (e.getKeyCode() == KeyEvent.VK_S) {
 		player.movingDown = true;
 	}
 
-	if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	if (e.getKeyCode() == KeyEvent.VK_D) {
 		player.movingRight = true;
 	}
 
-	if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+	if (e.getKeyCode() == KeyEvent.VK_A) {
 		player.movingLeft = true;
 	}
 	}
@@ -39,18 +39,18 @@ public GamePanel() {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
 			player.movingUp = false;
 		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+		if (e.getKeyCode() == KeyEvent.VK_S) {
 			player.movingDown = false;
 		}
 
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_D) {
 			player.movingRight = false;
 		}
 
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		if (e.getKeyCode() == KeyEvent.VK_A) {
 			player.movingLeft = false;
 		}
 	}
