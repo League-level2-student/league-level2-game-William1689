@@ -16,44 +16,29 @@ public class Tag {
 		panel = new GamePanel();
 	}
 	public void setup() {
-			frame.setTitle("Tag");
-			frame.add(panel);
-			frame.setVisible(true);
-			panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-			frame.pack();
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.addKeyListener(panel);
-			}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		frame.setTitle("Tag");
+		frame.add(panel);
+		frame.setVisible(true);
+		panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addKeyListener(panel);
+
+	}	
+
+
+
+
+
+
+
+
+
 	public static void main(String[] args) {
 		Tag game = new Tag();
 		game.setup();
 
-}
+	}
 
 
 

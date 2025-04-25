@@ -37,18 +37,6 @@ public class Player extends GameObject {
 		if(movingRight == true) {
 			right();
 		}
-		if(movingUp1 == true) {
-			up();
-		}
-		if(movingDown1 == true) {
-			down();
-		}
-		if(movingLeft1 == true) {
-			left(); 
-		}
-		if(movingRight1 == true) {
-			right();
-		}
 		
 
 		super.update();
