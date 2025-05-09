@@ -9,10 +9,7 @@ public class Player extends GameObject {
 	boolean movingRight = false;
 	boolean movingLeft = false;
 	
-	boolean movingUp1 = false;
-	boolean movingDown1 = false;
-	boolean movingRight1 = false;
-	boolean movingLeft1 = false;
+	
 	Color color;
 
 	public Player(int x, int y, int width, int height, Color color) {
@@ -20,26 +17,37 @@ public class Player extends GameObject {
 		this.color = color;
 		speed = 7;
 	}
+@Override
+public void update() {
+	// TODO Auto-generated method stub
+	
+	if(movingUp == true) {
+		up();
+	}
+	if(movingDown == true) {
+		down();
+	}
+	if(movingLeft == true) {
+		left(); 
+	}
+	if(movingRight == true) {
+		right();
+	}
+	
+	
+	
+
+	
+
+	super.update();
+}
+
 
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
 
-		if(movingUp == true) {
-			up();
-		}
-		if(movingDown == true) {
-			down();
-		}
-		if(movingLeft == true) {
-			left(); 
-		}
-		if(movingRight == true) {
-			right();
-		}
-		
-
-		super.update();
+	
 	}
 	public void right() {
 		if(x<Tag.WIDTH-this.width){
@@ -63,6 +71,6 @@ public class Player extends GameObject {
 			y+=speed;
 		}
 	}
-
+	
 
 }

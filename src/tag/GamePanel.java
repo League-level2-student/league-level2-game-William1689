@@ -14,22 +14,31 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	Player player;
 	Player player2;
+	BadGuy badguy;
 	private Timer frameDraw;
 
 
 	public GamePanel() {
 		frameDraw = new Timer(1000/60,this);
 		frameDraw.start();
-		player = new Player(960,450,40,40,Color.BLUE) ;
+		player = new Player(960,450,40,40,Color.BLUE);
+		player2 = new Player(960,450,40,40,Color.GREEN);
+		
+				
 
 
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		repaint();
-
+update();
 	}
 
+	private void update() {
+		// TODO Auto-generated method stub
+		player.update();
+		player2.update();
+	}
 	private void draw() {
 		// TODO Auto-generated method stub
 
@@ -41,6 +50,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
 		player.draw(g);
+		player2.draw(g);
 
 	}
 
@@ -62,6 +72,26 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			player.movingLeft = true;
 		}
+		
+		
+		
+		
+		
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			player2.movingUp = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			player2.movingDown = true;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			player2.movingRight = true;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			player2.movingLeft = true;
+		}
+		
 	}
 
 	@Override
@@ -81,6 +111,25 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			player.movingLeft = false;
 		}
+		
+		
+		
+		
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			player2.movingUp = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			player2.movingDown = false;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			player2.movingRight = false;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			player2.movingLeft = false;
+		}
+		
 	}
 	@Override
 	public void keyTyped(KeyEvent arg0) {

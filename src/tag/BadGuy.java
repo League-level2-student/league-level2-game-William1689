@@ -1,9 +1,13 @@
 package tag;
+import java.awt.Color;
+public class BadGuy extends GameObject {
 
-public class BadGuy {
+Color color;
 
-	public BadGuy(int x, int y, int width, int height, int speed){
-		
+	public BadGuy(int x, int y, int width, int height, int speed,Color color){
+		super(x, y, width, height);
+		this.color = color;
+		speed = 8;
 	}
 
 
