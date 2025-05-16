@@ -1,14 +1,28 @@
 package tag;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Player extends GameObject {
+import javax.swing.Timer;
+
+public class Player extends GameObject implements ActionListener {
 
 	boolean movingUp = false;
 	boolean movingDown = false;
 	boolean movingRight = false;
 	boolean movingLeft = false;
 	
+	boolean dashUp = false;
+	boolean dashDown = false;
+	boolean dashRight = false;
+	boolean dashLeft = false;
+	
+	boolean dashing = false;
+	boolean canDash = true;
+	
+	Timer cooldown;
+	Timer dashAnimation ;
 	
 	Color color;
 
@@ -16,6 +30,10 @@ public class Player extends GameObject {
 		super(x, y, width, height);
 		this.color = color;
 		speed = 7;
+		
+		cooldown  = new Timer(4000,this);
+		dashAnimation = new Timer(1000/30,this);
+		
 	}
 @Override
 public void update() {
@@ -33,9 +51,12 @@ public void update() {
 	if(movingRight == true) {
 		right();
 	}
-	
-	
-	
+	if(dashing == true) {
+		dash();
+	}
+	if(dashing == false) {
+		cooldown.start();
+	}
 
 	
 
@@ -47,6 +68,15 @@ public void update() {
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
 
+	
+	}
+	public void dash() {
+		dashDown = movingDown;
+		dashUp = movingUp;
+		dashRight = movingRight;
+		dashLeft = movingLeft;
+		dashAnimation.start();
+		
 	
 	}
 	public void right() {
@@ -69,6 +99,38 @@ public void update() {
 
 		if(y<Tag.HEIGHT-this.height) {
 			y+=speed;
+		}
+	}
+	
+	int frameCount = 0;
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource() == dashAnimation) {
+			frameCount ++;
+			if(frameCount == 10) {
+				dashAnimation.stop();
+				frameCount = 0;
+				dashing = false;
+				return;
+			}
+			if(dashRight) {
+				x+=20;
+				
+			}
+			if(dashDown) {
+				y+=20;
+				
+			}
+			if(dashUp) {
+				y-=20;
+				
+			}
+			if(dashLeft) {
+				x-=20;
+				
+			}
 		}
 	}
 	

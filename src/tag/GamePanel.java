@@ -14,15 +14,16 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	Player player;
 	Player player2;
-	BadGuy badguy;
+	Ball ball;
 	private Timer frameDraw;
 
 
 	public GamePanel() {
 		frameDraw = new Timer(1000/60,this);
 		frameDraw.start();
-		player = new Player(960,450,40,40,Color.BLUE);
-		player2 = new Player(960,450,40,40,Color.GREEN);
+		player = new Player(820,450,40,40,Color.BLUE);
+		player2 = new Player(1100,450,40,40,Color.GREEN);
+		ball = new Ball(960,450,40,40, Color.RED);
 		
 				
 
@@ -38,6 +39,7 @@ update();
 		// TODO Auto-generated method stub
 		player.update();
 		player2.update();
+		ball.update();
 	}
 	private void draw() {
 		// TODO Auto-generated method stub
@@ -51,6 +53,7 @@ update();
 		super.paintComponent(g);
 		player.draw(g);
 		player2.draw(g);
+		ball.draw(g);
 
 	}
 
@@ -71,6 +74,9 @@ update();
 
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			player.movingLeft = true;
+		}
+		if(e.getKeyCode()== KeyEvent.VK_T) {
+			player.dashing = true;
 		}
 		
 		
@@ -111,6 +117,7 @@ update();
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			player.movingLeft = false;
 		}
+		
 		
 		
 		
