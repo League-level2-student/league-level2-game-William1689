@@ -97,7 +97,9 @@ update();
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			player2.movingLeft = true;
 		}
-		
+		if(e.getKeyCode() == KeyEvent.VK_M) {
+			player2.dashing = true;
+		}
 	}
 
 	@Override
