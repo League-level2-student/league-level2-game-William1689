@@ -14,7 +14,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	Player player;
 	Player player2;
-	Ball ball;
+	Flag flag;
+	Flag flag2;
 	private Timer frameDraw;
 
 
@@ -23,7 +24,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		frameDraw.start();
 		player = new Player(820,450,40,40,Color.BLUE);
 		player2 = new Player(1100,450,40,40,Color.GREEN);
-		ball = new Ball(960,450,40,40, Color.RED);
+		flag = new Flag(1880,450,40,40, Color.GREEN);
+		flag2 = new Flag(0,450,40,40, Color.BLUE);
 		
 				
 
@@ -39,7 +41,8 @@ update();
 		// TODO Auto-generated method stub
 		player.update();
 		player2.update();
-		ball.update();
+		flag.update();
+		flag2.update();
 	}
 	private void draw() {
 		// TODO Auto-generated method stub
@@ -53,7 +56,8 @@ update();
 		super.paintComponent(g);
 		player.draw(g);
 		player2.draw(g);
-		ball.draw(g);
+		flag.draw(g);
+		flag2.draw(g);
 
 	}
 

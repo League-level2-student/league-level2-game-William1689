@@ -1,11 +1,11 @@
   package tag;
 import java.awt.Color;
 import java.awt.Graphics;
-public class Ball extends GameObject {
+public class Flag extends GameObject {
 
 Color color;
 
-	public Ball(int x, int y, int width, int height,Color color){
+	public Flag(int x, int y, int width, int height,Color color){
 		super(x, y, width, height);
 		this.color = color;
 		
