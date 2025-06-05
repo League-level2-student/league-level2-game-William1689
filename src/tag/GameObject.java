@@ -1,4 +1,5 @@
 package tag;
+import java.awt.Color;
 import java.awt.Rectangle;
 
 public class GameObject {
@@ -6,6 +7,7 @@ public class GameObject {
 	int y;
 	int width;
 	int height;
+	Color color;
 	int speed = 0;
 	boolean isActive = true;
 	Rectangle collisionBox;
@@ -17,7 +19,7 @@ public class GameObject {
 
 
 
-	public GameObject(int x, int y, int width, int height) {
+	public GameObject(int x, int y, int width, int height, Color color) {
 		this.x =x;
 		this.y = y;
 		this.width = width;

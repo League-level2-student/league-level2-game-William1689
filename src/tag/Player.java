@@ -27,7 +27,7 @@ public class Player extends GameObject implements ActionListener {
 	Color color;
 
 	public Player(int x, int y, int width, int height, Color color) {
-		super(x, y, width, height);
+		super(x, y, width, height, color);
 		this.color = color;
 		speed = 7;
 		
@@ -67,7 +67,7 @@ public void update() {
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
-
+		
 	
 	}
 	public void dash() {
