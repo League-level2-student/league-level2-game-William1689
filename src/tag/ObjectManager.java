@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class ObjectManager implements ActionListener{
@@ -50,14 +51,59 @@ public class ObjectManager implements ActionListener{
 		for(int i = 0; i<projectiles.size();i++) {
 			projectiles.get(i).draw(g);
 		}
-		for(int i = 0;i<projectiles.size(); i++) {
+		for(int i = 0;i<enemys.size(); i++) {
 			enemys.get(i).draw(g);
 		}
 	}
 
 	public void checkCollisions() {
+		for(Enemy e: enemys) { if(player.collisionBox.intersects(e.collisionBox)){
+			player.isActive = false; }
+
+		if(player2.collisionBox.intersects(e.collisionBox)) {
+			player2.isActive = false;
+		}
+
+		for(Projectile p: projectiles) {
+			if(e.collisionBox.intersects(p.collisionBox)) {
+				e.isActive = false;
+			}
+		}
+
+
+
+		}
+	}
+
+
+	public void killObjects() {
+		Iterator<Enemy> iter = enemys.iterator();
+		while(iter.hasNext()) {
+			Enemy e = iter.next();
+			if(!e.isActive) {
+				iter.remove();
+			}
+		}
+
+
+		Iterator<Projectile> iters = projectiles.iterator();
+		while(iters.hasNext()) {
+			Projectile b = iters.next();
+			if(!b.isActive) {
+				iters.remove();
+			}
+
+		}
+
+
+
 
 	}
+
+
+
+
+
 
 
 	public void actionPerformed(ActionEvent arg0) {

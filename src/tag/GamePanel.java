@@ -14,9 +14,9 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	Player player;
 	Player player2;
-	Flag flag;
-	Flag flag2;
+	Timer enemySpawn;
 	private Timer frameDraw;
+	ObjectManager manager;
 
 
 	public GamePanel() {
@@ -24,8 +24,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		frameDraw.start();
 		player = new Player(820,450,40,40,Color.BLUE);
 		player2 = new Player(1100,450,40,40,Color.GREEN);
-		flag = new Flag(1880,450,40,40, Color.GREEN);
-		flag2 = new Flag(0,450,40,40, Color.BLUE);
+		manager = new ObjectManager(player, player2);
 		
 				
 
@@ -41,8 +40,7 @@ update();
 		// TODO Auto-generated method stub
 		player.update();
 		player2.update();
-		flag.update();
-		flag2.update();
+		
 	}
 	private void draw() {
 		// TODO Auto-generated method stub
@@ -56,11 +54,13 @@ update();
 		super.paintComponent(g);
 		player.draw(g);
 		player2.draw(g);
-		flag.draw(g);
-		flag2.draw(g);
+		
 
 	}
-
+public void gameStart() {
+	enemySpawn = new Timer(90, manager);
+	enemySpawn.start();
+}
 
 
 	public void keyPressed(KeyEvent e) {
@@ -82,6 +82,9 @@ update();
 		if(e.getKeyCode()== KeyEvent.VK_T) {
 			player.dashing = true;
 		}
+		if(e.getKeyCode()== KeyEvent.VK_R) {
+		
+		}
 		
 		
 		
@@ -101,8 +104,12 @@ update();
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			player2.movingLeft = true;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_M) {
+		if(e.getKeyCode() == KeyEvent.VK_L) {
 			player2.dashing = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_K) {
+
+			manager.addProjectile(new Projectile(player2.x, player2.y, 40, 40));
 		}
 	}
 
