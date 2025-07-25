@@ -35,6 +35,9 @@ public class Player extends GameObject implements ActionListener {
 		dashAnimation = new Timer(1000/30,this);
 		
 	}
+	public Projectile getProjectile() {
+		return new Projectile(x+width/2, y, 10, 10);
+	}
 @Override
 public void update() {
 	// TODO Auto-generated method stub
