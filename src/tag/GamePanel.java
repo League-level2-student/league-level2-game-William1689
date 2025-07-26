@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		player = new Player(820,450,40,40,Color.BLUE);
 		player2 = new Player(1100,450,40,40,Color.GREEN);
 		manager = new ObjectManager(player, player2);
-		boss1 = new Boss(Tag.WIDTH/2,100,80,80);
+		boss1 = new Boss(Tag.WIDTH/2,100,80,80,Color.ORANGE);
 		
 				
 
@@ -88,7 +88,7 @@ public void gameStart() {
 			player.dashing = true;
 		}
 		if(e.getKeyCode()== KeyEvent.VK_R) {
-			manager.addProjectile(new Projectile(player2.x, player2.y, 40, 40));
+			manager.addProjectile(new Projectile(player.x, player.y, 40, 40));
 		}
 		
 		

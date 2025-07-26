@@ -1,4 +1,4 @@
-package tag;
+  package tag;
 import java.awt.Color;
 import java.awt.Rectangle;
 
