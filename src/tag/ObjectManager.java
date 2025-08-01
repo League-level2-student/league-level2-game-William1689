@@ -17,7 +17,7 @@ public class ObjectManager implements ActionListener{
 		this.player = player;
 		this.player2 = player2;
 		this.projectiles = new ArrayList<Projectile>();
-		this.projectiles = new ArrayList<Projectile>();
+		this.enemys = new ArrayList<Enemy>();
 	}
 	public void addProjectile(Projectile projectile) {
 		projectiles.add(projectile);
@@ -67,6 +67,7 @@ public class ObjectManager implements ActionListener{
 		for(Projectile p: projectiles) {
 			if(e.collisionBox.intersects(p.collisionBox)) {
 				e.isActive = false;
+				//MAYBE projectile gets inactive too
 			}
 		}
 

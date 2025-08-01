@@ -40,9 +40,10 @@ update();
 
 	private void update() {
 		// TODO Auto-generated method stub
-		player.update();
-		player2.update();
+		
 		boss1.update();
+		manager.update();
+		
 		
 	}
 	private void draw() {
@@ -55,9 +56,9 @@ update();
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
-		player.draw(g);
-		player2.draw(g);
-		boss1.draw(g);
+		
+		
+		manager.draw(g);
 	
 		
 
