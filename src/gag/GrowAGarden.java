@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 
 
@@ -19,6 +20,7 @@ public class GrowAGarden extends JPanel implements KeyListener, ActionListener {
 	public static final int HEIGHT = 900;
 	Player player = new Player(1920/2,450,40,40);
 	JFrame frame;
+	Timer timer;
 	
 
 	public GrowAGarden() {
@@ -27,6 +29,7 @@ public class GrowAGarden extends JPanel implements KeyListener, ActionListener {
 	}
 	public void setup() {
 		frame.setTitle("Grow A Garden");
+		timer = new Timer(100/6, this);
 		frame.add(this);
 		frame.setVisible(true);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -34,7 +37,7 @@ public class GrowAGarden extends JPanel implements KeyListener, ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener( this);
 		setBackground(Color.green);
-
+		timer.start();
 	}	
 	private void draw() {
 		
@@ -106,7 +109,8 @@ public class GrowAGarden extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		repaint();
+		player.update();
 	}
 
  
