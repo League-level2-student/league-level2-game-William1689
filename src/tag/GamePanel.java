@@ -14,7 +14,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	Player player;
 	Player player2;
-	Boss boss1;
+
 	Timer enemySpawn;
 	private Timer frameDraw;
 	ObjectManager manager;
@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		player = new Player(820,450,40,40,Color.BLUE);
 		player2 = new Player(1100,450,40,40,Color.GREEN);
 		manager = new ObjectManager(player, player2);
-		boss1 = new Boss(Tag.WIDTH/2,100,80,80,Color.ORANGE);
+	
 		
 				
 
@@ -38,10 +38,11 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 update();
 	}
 
+	
 	private void update() {
 		// TODO Auto-generated method stub
 		
-		boss1.update();
+
 		manager.update();
 		
 		
