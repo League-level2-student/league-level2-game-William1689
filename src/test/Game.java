@@ -21,80 +21,107 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
 	JFrame frame;
 	Timer timer;
-Knight knight = new Knight(1920/2,450,30,30);
+	Knight knight = new Knight(1920/2,450,30,30,Color.BLACK);
+	Knight knight2 = new Knight(1920/2,450,30,30,Color.WHITE);
 	public Game() {
 		frame = new JFrame();
 	}
-public void setup() {
-	frame.setTitle("Game");
-	timer = new Timer(100/6, this);
-	frame.add(this);
-	frame.setVisible(true);
-	setPreferredSize(new Dimension(WIDTH, HEIGHT));
-	frame.pack();
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.addKeyListener( this);
-	setBackground(Color.green);
-	timer.start();
-}
+	public void setup() {
+		frame.setTitle("Game");
+		timer = new Timer(100/6, this);
+		frame.add(this);
+		frame.setVisible(true);
+		setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addKeyListener( this);
+		setBackground(Color.green);
+		timer.start();
+	}
 
-private void draw() {
-	
-}
-protected void paintComponent(Graphics g) {
-	super.paintComponent(g);
-	knight.draw(g);
-}
+	private void draw() {
+
+	}
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		knight.draw(g);
+		knight2.draw(g);
+	}
 
 
-public static void main(String[] args) {
-	Game game = new Game();
-	game.setup();
-}
-@Override
-public void keyPressed(KeyEvent e) {
-	// TODO Auto-generated method stub
-	if (e.getKeyCode() == KeyEvent.VK_UP) {
-		knight.movingUp = true;
-		
+	public static void main(String[] args) {
+		Game game = new Game();
+		game.setup();
 	}
-	if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-		knight.movingDown = true;
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			knight.movingUp = true;
+
+		}
+		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			knight.movingDown = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			knight.movingLeft = true;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			knight.movingRight = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_W) {
+			knight2.movingUp = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_A) {
+			knight2.movingLeft = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_S) {
+			knight2.movingDown = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_D) {
+			knight2.movingRight = true;
+		}
 	}
-	if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-		knight.movingLeft = true;
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			knight.movingUp = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			knight.movingDown = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			knight.movingLeft = false;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			knight.movingRight = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_W) {
+			knight2.movingUp = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_A) {
+			knight2.movingLeft = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_S) {
+			knight2.movingDown = false;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_D) {
+			knight2.movingRight = false;
+		}
 	}
-	if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
-		knight.movingRight = true;
-			}
-}
-@Override
-public void keyReleased(KeyEvent e) {
-	// TODO Auto-generated method stub
-	if (e.getKeyCode() == KeyEvent.VK_UP) {
-		
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
 	}
-	if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-		knight.movingDown = false;
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		knight.update();
+		knight2.update();
+		repaint();
 	}
-	if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-		knight.movingLeft = false;
-	}
-	if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
-		knight.movingRight = false;
-			}
-}
-@Override
-public void keyTyped(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-@Override
-public void actionPerformed(ActionEvent arg0) {
-	// TODO Auto-generated method stub
-	knight.update();
-	repaint();
-}
 
 
 }
