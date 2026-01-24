@@ -21,8 +21,8 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
 	JFrame frame;
 	Timer timer;
-	Knight knight = new Knight(1920/2,450,30,30,Color.BLACK);
-	Knight knight2 = new Knight(1920/2,450,30,30,Color.WHITE);
+	Knight knight = new Knight(1890,450,30,30,Color.BLACK);
+	Knight knight2 = new Knight(0,450,30,30,Color.WHITE);
 	public Game() {
 		frame = new JFrame();
 	}
@@ -35,7 +35,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener( this);
-		setBackground(Color.green);
+		setBackground(Color.GRAY);
 		timer.start();
 	}
 
@@ -69,6 +69,12 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
 			knight.movingRight = true;
 		}
+		if(e.getKeyCode() == KeyEvent.VK_L) {
+			knight.stabbing = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_K) {
+			knight.dashing = true;
+		}
 		if(e.getKeyCode() == KeyEvent.VK_W) {
 			knight2.movingUp = true;
 		}
@@ -80,6 +86,12 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 		}
 		if(e.getKeyCode() == KeyEvent.VK_D) {
 			knight2.movingRight = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_T) {
+			knight2.stabbing = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_Y) {
+			knight2.dashing = true;
 		}
 	}
 	@Override
