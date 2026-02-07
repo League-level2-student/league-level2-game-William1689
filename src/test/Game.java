@@ -132,6 +132,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		knight.update();
 		knight2.update();
+		
 		repaint();
 	}
 
