@@ -2,6 +2,7 @@ package test;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-
 public class Game extends JPanel implements ActionListener, KeyListener {
 
 	public static final int WIDTH = 1920;
@@ -21,8 +21,13 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
 	JFrame frame;
 	Timer timer;
+	int whiteScore = 0;
+	int blackScore = 0;
+	ObjectManager manager;
 	Knight knight = new Knight(1890,450,30,30,Color.BLACK);
 	Knight knight2 = new Knight(0,450,30,30,Color.WHITE);
+	Font font = new Font("Monospaced",0, 100);
+			
 	public Game() {
 		frame = new JFrame();
 	}
@@ -37,15 +42,31 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 		frame.addKeyListener( this);
 		setBackground(Color.GRAY);
 		timer.start();
+		manager = new ObjectManager(knight,knight2);
+	
+		
 	}
-
-	private void draw() {
-
-	}
+ public void check() {
+	 if(manager.black.isActive = false) {
+		 blackScore++;
+		 knight.x = 1890;
+		 knight.y = 450;
+				 
+		 
+		 
+		 
+	 }
+		 
+ }
+ 
+	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		knight.draw(g);
 		knight2.draw(g);
+		g.setColor(Color.black);
+		g.setFont(font);
+		g.drawString(whiteScore + " - " + blackScore, WIDTH/2-150, 150);
 	}
 
 
@@ -130,8 +151,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		knight.update();
-		knight2.update();
+		manager.update();
 		
 		repaint();
 	}

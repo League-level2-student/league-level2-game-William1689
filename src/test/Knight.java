@@ -81,7 +81,7 @@ public class Knight extends GameObject implements ActionListener{
 		if( dashing == true) {
 			dash();
 		}
-
+		super.update();
 	}
 	public void stab() {
 		stabDown = movingDown;
