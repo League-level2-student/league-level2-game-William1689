@@ -28,7 +28,7 @@ public class Knight extends GameObject implements ActionListener{
 	boolean dashing = false;
 
 	boolean damageOn = false;
-
+	boolean canStab = true;
 	boolean stabUp = false;
 	boolean stabDown = false; 
 	boolean stabRight = false;
@@ -41,6 +41,7 @@ public class Knight extends GameObject implements ActionListener{
 	Color color;
 
 	int speed = 9;
+	Timer cooldown;
 	Timer dashAnimation ;
 	Timer stabAnimation ;
 	public Knight(int x, int y, int width, int height, Color color) {
@@ -48,8 +49,9 @@ public class Knight extends GameObject implements ActionListener{
 		// TODO Auto-generated constructor stub
 		this.color = color;
 
-		stabAnimation = new Timer(1000/100, this);
-		dashAnimation = new Timer (1000/20, this);
+		stabAnimation = new Timer(1000/110, this);
+		dashAnimation = new Timer (1000/150, this);
+		cooldown = new Timer(2000, this);
 	};
 
 	public void draw(Graphics g) {
@@ -84,12 +86,15 @@ public class Knight extends GameObject implements ActionListener{
 		super.update();
 	}
 	public void stab() {
+		if(canStab) {
 		stabDown = movingDown;
 		stabUp = movingUp;
 		stabRight = movingRight;
 		stabLeft = movingLeft;
 		stabAnimation.start();
-
+		canStab = false;
+		cooldown.start();
+		}
 	}
 	public void dash() {
 		dashingDown = movingDown;
@@ -138,18 +143,22 @@ public class Knight extends GameObject implements ActionListener{
 				return;
 			}
 			if(stabRight) {
-				x+=8;
+				x+=13;
 			}
 			if(stabLeft) {
-				x-=8;
+				x-=13;
 
 			}
 			if(stabDown) {
-				y+=8;
+				y+=13;
 			}
 			if(stabUp) {
-				y-=8;
+				y+=13;
 			}
+		}
+		if(e.getSource() == cooldown) {
+			cooldown.stop();
+			canStab = true;
 		}
 		if(e.getSource() == dashAnimation){
 			dashFrameCount++;
@@ -161,16 +170,16 @@ public class Knight extends GameObject implements ActionListener{
 				return;
 			}
 			if(dashingRight ) {
-				x+=9;
+				x+=5;
 			}
 			if(dashingLeft) {
-				x-=9;
+				x-=5;
 			}
 			if(dashingDown) {
-				y+=9;
+				y+=5;
 			}
 			if(dashingUp) {
-				y-=9;
+				y-=5;
 			}
 		}
 	}

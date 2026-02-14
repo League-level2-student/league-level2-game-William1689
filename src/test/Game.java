@@ -46,18 +46,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 	
 		
 	}
- public void check() {
-	 if(manager.black.isActive = false) {
-		 blackScore++;
-		 knight.x = 1890;
-		 knight.y = 450;
-				 
-		 
-		 
-		 
-	 }
-		 
- }
+ 
  
 	
 	protected void paintComponent(Graphics g) {
@@ -66,9 +55,31 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 		knight2.draw(g);
 		g.setColor(Color.black);
 		g.setFont(font);
-		g.drawString(whiteScore + " - " + blackScore, WIDTH/2-150, 150);
+		g.drawString(blackScore + " - " + whiteScore, WIDTH/2-150, 150);
+		
+		
 	}
-
+	public void check() {
+		 if(manager.black.isActive == false) {
+			 whiteScore++;
+			 manager.black.isActive = true;
+			 knight.x = 1890;
+			 knight.y = 450;
+			 knight2.x = 0;
+			 knight2.y = 450;
+			  }
+		
+		 if(manager.white.isActive == false) {
+			 blackScore++;
+			 manager.white.isActive = true;
+			 knight.x = 1890;
+			 knight.y = 450;
+			 knight2.x = 0;
+			 knight2.y = 450;
+			 
+		 }
+			 
+	 }
 
 	public static void main(String[] args) {
 		Game game = new Game();
@@ -152,7 +163,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		manager.update();
-		
+		check();
 		repaint();
 	}
 
