@@ -48,14 +48,13 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 	}
  
  
-	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		knight.draw(g);
 		knight2.draw(g);
 		g.setColor(Color.black);
 		g.setFont(font);
-		g.drawString(blackScore + " - " + whiteScore, WIDTH/2-150, 150);
+		g.drawString(whiteScore + " - " + blackScore, WIDTH/2-150, 150);
 		
 		
 	}
